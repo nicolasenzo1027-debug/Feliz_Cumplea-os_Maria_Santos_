@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.architect-font {
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+.panel.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.panel.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* Panel 1 */
+#panel1 {
+    background-image: url('wallpaperbetter.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim the background to make button pop */
+    z-index: 1;
+}
+
+.square-btn {
+    position: relative;
+    z-index: 2;
+    background-color: #000;
+    color: #fff;
+    border: 4px solid #fff;
+    padding: 3rem;
+    font-size: 3rem;
+    font-family: 'Fredericka the Great', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.square-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Panel 2 */
+#panel2 {
+    background-color: #000;
+    justify-content: flex-start;
+    padding: 2rem 0;
+    overflow-y: auto;
+}
+
+.panel2-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 1rem;
+}
+
+.maria-img {
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.hidden-delayed {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.hidden-delayed.show {
+    opacity: 1;
+}
+
+h1.architect-font {
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+/* Envelope */
+.envelope-wrapper {
+    position: relative;
+    margin-bottom: 5rem;
+    cursor: pointer;
+    width: 300px;
+    height: 200px;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #4a4a4a; /* Grey envelope */
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 20px rgba(255,255,255,0.05);
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #555;
+    z-index: 3;
+    transform-origin: top;
+    transition: transform 0.6s ease-in-out;
+}
+
+.pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid #666;
+    border-right: 150px solid #666;
+    border-bottom: 100px solid #777;
+    z-index: 2;
+    border-radius: 0 0 10px 10px;
+}
+
+.letter {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    height: 180px;
+    background-color: #fff;
+    color: #000;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: transform 0.8s ease-in-out, height 0.8s ease-in-out;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.letter-content {
+    padding: 20px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    height: 100%;
+}
+
+.cat-img {
+    width: 65px;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+/* Open Envelope State */
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.envelope.open .letter {
+    height: 440px;
+    transform: translateY(-40px);
+    z-index: 4; /* Comes in front of pocket */
+    overflow: visible;
+}
+
+/* Red Button */
+.red-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+.red-btn {
+    background-color: #dc2626; /* Red */
+    color: white;
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+    transition: transform 0.1s, background-color 0.3s;
+}
+
+.red-btn:hover {
+    background-color: #b91c1c;
+}
+
+.red-btn:active {
+    transform: scale(0.95);
+}
+
+.hidden-text {
+    margin-top: 1.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.hidden-text.show {
+    opacity: 1;
+}
